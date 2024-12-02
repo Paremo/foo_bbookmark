@@ -359,6 +359,7 @@ namespace {
 		//get: Derive config from state; called at shutdown
 		ui_element_config::ptr get_configuration() {
 			if (cfg_bookmark_verbose) FB2K_console_print("get_configuration called.");
+			m_guiList.SetFont(m_callback->query_font_ex(ui_font_lists));
 			for (int i = 0; i < N_COLUMNS; i++) {
 				//do not accept 0; also prevents overwriting of inactive columns
 				int width = (int)m_guiList.GetColumnWidthF(i);
