@@ -415,6 +415,8 @@ namespace {
 
 		void configToUI() {
 			if (cfg_bookmark_verbose) FB2K_console_print("Applying config to UI: ", m_colWidths[0], " and ", m_colWidths[1]);
+			m_guiList.SetFont(m_callback->query_font_ex(ui_font_lists));
+
 			auto DPI = m_guiList.GetDPI();
 			m_guiList.DeleteColumns(pfc::bit_array_true(), false);
 
