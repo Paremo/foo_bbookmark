@@ -141,7 +141,7 @@ private:
 		size_t outSize;
 		wcstombs_s(&outSize, convertedContent, fieldContent, stringlength - 1);
 
-		return strcmp(convertedContent, *eat.cfg);
+		return strcmp(convertedContent, (*eat.cfg).get());
 	}
 
 	static_api_ptr_t<playback_control> m_playback_control;
@@ -210,7 +210,7 @@ void CBookmarkPreferences::OnCheckChange(UINT uNotifyCode, int nId, CWindow wndC
 			newName.replace_char(',', '.');
 
 			//check if the cfg already contains this name
-			std::stringstream ss(cfg_bookmark_autosave_newTrack_playlists.c_str());
+			std::stringstream ss(cfg_bookmark_autosave_newTrack_playlists.get().c_str());
 			std::string token;
 			while (std::getline(ss, token, ',')) {
 				if (strcmp(token.c_str(), newName.c_str()) == 0) {

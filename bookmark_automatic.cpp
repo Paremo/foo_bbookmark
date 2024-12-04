@@ -45,7 +45,7 @@ void bookmark_automatic::updateDummy() {
 	playback_control_ptr->get_now_playing(dbHandle_item);
 
 	titleformat_object::ptr desc_format;
-	static_api_ptr_t<titleformat_compiler>()->compile_safe_ex(desc_format, cfg_bookmark_desc_format.c_str());
+	static_api_ptr_t<titleformat_compiler>()->compile_safe_ex(desc_format, cfg_bookmark_desc_format.get().c_str());
 
 	if (!dbHandle_item->format_title(NULL, songDesc, desc_format, NULL)) {
 		songDesc << "Could not generate Description.";
@@ -83,7 +83,7 @@ bool bookmark_automatic::upgradeDummy(std::vector<bookmark_t>& masterList, std::
 
 		//Obtain individual names in the filter
 		std::vector<std::string> allowedPlaylists;
-		std::stringstream ss(cfg_bookmark_autosave_newTrack_playlists.c_str());
+		std::stringstream ss(cfg_bookmark_autosave_newTrack_playlists.get().c_str());
 		std::string token;
 		while (std::getline(ss, token, ',')) {
 			allowedPlaylists.push_back(token);

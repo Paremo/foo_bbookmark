@@ -46,7 +46,9 @@ namespace {
 	static const std::array<uint32_t, N_COLUMNS> defaultColWidths = { 40, 150, 110 };
 	static const std::array<bool, N_COLUMNS> defaultColActive = { true, true, false };
 
-	class CListControlBookmarkDialog : public CDialogImpl<CListControlBookmarkDialog>, public ui_element_instance,
+	class CListControlBookmarkDialog : 
+		public CDialogImpl<CListControlBookmarkDialog>, 
+		public ui_element_instance,
 		private IListControlBookmarkSource {
 	protected:
 		const ui_element_instance_callback::ptr m_callback;
