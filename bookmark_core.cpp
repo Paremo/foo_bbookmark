@@ -78,6 +78,7 @@ namespace {
 		static void g_get_name(pfc::string_base & out) { out = "Basic Bookmarks"; }
 		static const char * g_get_description() { return "Provides basic bookmark functionality."; }
 
+		void notify(const GUID & p_what, t_size p_param1, const void * p_param2, t_size p_param2size);
 
 		// ---(Re)store Bookmarks---
 		//Restores the bookmark currently focused by the first-born instance
@@ -151,6 +152,7 @@ namespace {
 			}
 
 			m_dark.AddDialogWithControls(*this);
+			m_guiList.SetFont(m_callback->query_font_ex(ui_font_lists));
 
 			HWND hwndBookmarkList = GetDlgItem(IDC_BOOKMARKLIST);
 			CListViewCtrl wndList(hwndBookmarkList);
@@ -366,7 +368,6 @@ namespace {
 		//get: Derive config from state; called at shutdown
 		ui_element_config::ptr get_configuration() {
 			if (cfg_bookmark_verbose) FB2K_console_print("get_configuration called.");
-			m_guiList.SetFont(m_callback->query_font_ex(ui_font_lists));
 			for (int i = 0; i < N_COLUMNS; i++) {
 				//do not accept 0; also prevents overwriting of inactive columns
 				int width = (int)m_guiList.GetColumnWidthF(i);
@@ -422,7 +423,6 @@ namespace {
 
 		void configToUI() {
 			if (cfg_bookmark_verbose) FB2K_console_print("Applying config to UI: ", m_colWidths[0], " and ", m_colWidths[1]);
-			m_guiList.SetFont(m_callback->query_font_ex(ui_font_lists));
 
 			auto DPI = m_guiList.GetDPI();
 			m_guiList.DeleteColumns(pfc::bit_array_true(), false);
@@ -436,6 +436,13 @@ namespace {
 			}
 		}
 	};
+
+	void CListControlBookmarkDialog::notify(const GUID & p_what, t_size p_param1, const void * p_param2, t_size p_param2size) {
+		if (p_what == ui_element_notify_colors_changed || p_what == ui_element_notify_font_changed) {
+			if (cfg_bookmark_verbose) FB2K_console_print("notify: color/font changed");
+			m_guiList.SetFont(m_callback->query_font_ex(ui_font_lists));
+		}
+	}
 
 	//=========================service factory======================
 	class clist_control_bookmark_impl : public ui_element_impl_withpopup<CListControlBookmarkDialog> {};
