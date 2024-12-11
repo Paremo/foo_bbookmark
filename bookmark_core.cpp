@@ -14,6 +14,7 @@
 #include <libPPUI/win32_op.h> // WIN32_OP()
 #include <helpers/atl-misc.h>
 #include <helpers/BumpableElem.h>
+#include <helpers/DarkMode.h>
 
 #include <algorithm>
 #include <array>
@@ -134,6 +135,8 @@ namespace {
 	private:
 		// ==================================members====================
 		CListControlBookmark m_guiList;
+		fb2k::CDarkModeHooks m_dark;
+
 		std::array<uint32_t, N_COLUMNS> m_colWidths;
 		std::array<bool, N_COLUMNS> m_colActive;
 
@@ -146,6 +149,8 @@ namespace {
 			if (g_primaryGuiList == NULL) {
 				g_primaryGuiList = &m_guiList;
 			}
+
+			m_dark.AddDialogWithControls(*this);
 
 			HWND hwndBookmarkList = GetDlgItem(IDC_BOOKMARKLIST);
 			CListViewCtrl wndList(hwndBookmarkList);
