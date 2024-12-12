@@ -25,8 +25,8 @@ void bookmark_persistence::write(std::vector<bookmark_t> & masterList) {
 		pfc::string linebreak = "\n";
 
 		auto addValue = [](foobar2000_io::file_ptr file, pfc::string value, const char separator) {
+			value.add_char(separator);
 			file->write_string_raw(value.c_str(), fb2k::noAbort);
-			file->write_string_raw(&separator, fb2k::noAbort);
 		};
 
 		for (size_t i = 0; i < n_entries; i++) {
