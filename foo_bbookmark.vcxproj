@@ -74,7 +74,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141_xp</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug UnitTests|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -84,7 +84,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug UnitTests|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141_xp</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -176,7 +176,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
       <EnableEnhancedInstructionSet>NoExtensions</EnableEnhancedInstructionSet>
-      <AdditionalIncludeDirectories>..;../..</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;../..;N:\FoobarSDK\packages\wtl.10.0.10320\lib\native\include</AdditionalIncludeDirectories>
       <FloatingPointModel>Fast</FloatingPointModel>
     </ClCompile>
     <Link>
@@ -231,7 +231,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
       <EnableEnhancedInstructionSet>NoExtensions</EnableEnhancedInstructionSet>
-      <AdditionalIncludeDirectories>..;../..</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;../..;N:\FoobarSDK\packages\wtl.10.0.10320\lib\native\include</AdditionalIncludeDirectories>
       <FloatingPointModel>Fast</FloatingPointModel>
     </ClCompile>
     <Link>
@@ -260,7 +260,7 @@
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <StringPooling>true</StringPooling>
       <OmitFramePointers>true</OmitFramePointers>
-      <AdditionalIncludeDirectories>..;../..;..\packages\wtl.10.0.10320\lib\native\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;../..;N:\FoobarSDK\FoobarSDK-2024-12-03\foobar2000\foo_bbookmark\packages\wtl.10.0.10320\lib\native\include</AdditionalIncludeDirectories>
       <FloatingPointModel>Fast</FloatingPointModel>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
@@ -276,7 +276,7 @@
       <AdditionalDependencies>../shared/shared-Win32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>taskkill /IM foobar2000.exe &amp; Start-Sleep .5 &amp; copy  "N:\FoobarSDK\FoobarSDK-2023-04-18\foobar2000\foo_bbookmark\Release\foo_bbookmark.dll" "C:\Users\Paremo\AppData\Roaming\foobar2000-v2\user-components\foo_bbookmark" /y &amp; echo 0</Command>
+      <Command>powershell .\deployDll.ps1</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -293,7 +293,7 @@
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <StringPooling>true</StringPooling>
       <OmitFramePointers>true</OmitFramePointers>
-      <AdditionalIncludeDirectories>..;../..;N:\FoobarSDK\FoobarSDK-2023-04-18\foobar2000\packages\wtl.10.0.10320\lib\native\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;../..;N:\FoobarSDK\packages\wtl.10.0.10320\lib\native\include</AdditionalIncludeDirectories>
       <FloatingPointModel>Fast</FloatingPointModel>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
@@ -308,7 +308,8 @@
       <AdditionalDependencies>../shared/shared-Win32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>taskkill /IM foobar2000.exe &amp; sleep .5 &amp; copy  "N:\FoobarSDK\SDK-2019-09-18_primary\foobar2000\foo_bbookmark\Release\foo_bbookmark.dll" "C:\Users\Paremo\AppData\Roaming\foobar2000\user-components\foo_bbookmark" /y &amp; echo 0</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseFoobar|Win32'">
@@ -358,7 +359,7 @@
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <StringPooling>true</StringPooling>
       <OmitFramePointers>true</OmitFramePointers>
-      <AdditionalIncludeDirectories>..;../..;..\packages\wtl.10.0.10320\lib\native\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;../..;N:\FoobarSDK\packages\wtl.10.0.10320\lib\native\include</AdditionalIncludeDirectories>
       <FloatingPointModel>Fast</FloatingPointModel>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>

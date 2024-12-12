@@ -64,7 +64,7 @@ namespace {
 			MSG_WM_INITDIALOG(OnInitDialog)
 			MSG_WM_SIZE(OnSize)
 			MSG_WM_CONTEXTMENU(OnContextMenu)
-			END_MSG_MAP()
+		END_MSG_MAP()
 
 		void initialize_window(HWND parent) { WIN32_OP(Create(parent) != NULL); }
 		HWND get_wnd() { return m_hWnd; }
